@@ -19,16 +19,13 @@
                             <th>TÌNH TRẠNG ĐƠN HÀNG</th>
                             <th>NGÀY ĐẶT HÀNG</th>
                             <th>THAO TÁC</th>
-                            <th></th>
                         </tr>
 
                         <?php 
                             foreach($listbill as $bill){
                                 extract($bill);
                                 $kh=$bill['bill_name'].' 
-                                    <br> '.$bill['bill_email'].'
-                                    <br>'.$bill['bill_address'].'
-                                    <br>'.$bill['bill_tel'].'';
+                                    <br> '.$bill['bill_email'].'';
                                 $countsp=loadALl_cart_count($bill['id']);
                                 $ttdh=get_ttdh($bill['bill_status']);
                                 $xoadh="index.php?act=xoadh&id=".$id;
@@ -44,13 +41,13 @@
                                         <td>'.$bill['ngaydathang'].'</td>
                                         <td>
                                             <a href="'.$xoadh.'"><input type="button" value="Xóa"></a>
-                                            <a href="'.$suadh.'"><input type="button" value="Sửa"></a>
+                                            
+
                                         </td>
                                     </tr>';
                             }                        
                         
                         ?>
-                        
                     </table>
                     
                 </div>

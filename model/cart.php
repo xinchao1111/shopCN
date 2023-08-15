@@ -162,8 +162,27 @@ function loadAll_thongke(){
     return $listtk;
 }
 
+// function delete_donhang($id) {
+//     $sql = "DELETE FROM bill WHERE id=".$id;
+//     pdo_execute($sql);
+// }
+
 function delete_donhang($id) {
-    $sql = "DELETE FROM bill WHERE id=".$id;
-    pdo_execute($sql);
+    // Xóa liên kết đơn hàng với sản phẩm trước
+    $sql_delete_order_products = "DELETE FROM cart WHERE idbill = :id";
+    $params = array(':id' => $id);
+    pdo_execute1($sql_delete_order_products, $params);
+
+    // Xóa đơn hàng
+    $sql_delete_bill = "DELETE FROM bill WHERE id = :id";
+    pdo_execute1($sql_delete_bill, $params);
 }
+
+function update_bill_status($bill_id, $new_status) {
+    $sql = "UPDATE bill SET bill_status = :status WHERE id = :id";
+    $sql_args = array(':status' => $new_status, ':id' => $bill_id);
+    pdo_execute($sql, $sql_args);
+}
+
+
 

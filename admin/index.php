@@ -139,8 +139,9 @@
                 if(isset($_GET['id']) && ($_GET['id'] > 0)){
                     delete_binhluan($_GET['id']);
                 }
-                $listdanhmuc=loadAll_binhluan(1);
-                include "binhluan/list.php";
+                $listbinhluan=loadAll_binhluan(1);
+                header("Location: index.php?act=dsbl");
+                // include "binhluan/list.php";
                 break;
             case 'thongke':
                 $listthongke=loadAll_thongke();
@@ -155,11 +156,24 @@
                 $listbill=loadALl_bill($kyw,0);
                 include "bill/listbill.php";
                 break;
+            // case 'xoadh':
+            //     if(isset($_GET['id']) && ($_GET['id'] > 0)){
+            //         delete_donhang($_GET['id']);
+            //     }
+            //     $listbill=loadALl_bill();
+            //     include "bill/listbill.php";
+            //     break;
             case 'xoadh':
                 if(isset($_GET['id']) && ($_GET['id'] > 0)){
-                    delete_donhang($_GET['id']);
+                    // Lấy thông tin đơn hàng
+                    $id_to_delete = $_GET['id'];
+                
+                    // Thực hiện xóa đơn hàng và các liên kết
+                    delete_donhang($id_to_delete);
                 }
-                $listbill=loadALl_bill();
+                
+                // Sau khi xóa đơn hàng, load lại danh sách đơn hàng
+                $listbill = loadALl_bill();
                 include "bill/listbill.php";
                 break;
             default:

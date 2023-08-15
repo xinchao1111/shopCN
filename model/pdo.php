@@ -30,6 +30,21 @@ function pdo_execute($sql) {
     }
 }
 
+function pdo_execute1($sql, $sql_args = array()) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+    } catch(PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
+
+
+
+
 function pdo_execute_return_lastInsertId($sql) {
     $sql_args = array_slice(func_get_args(), 1);
     try {
@@ -91,6 +106,21 @@ function pdo_query_one($sql){
         unset($conn);
     }
 }
+
+
+// function pdo_query_one1($sql, $sql_args = array()) {
+//     try {
+//         $conn = pdo_get_connection();
+//         $stmt = $conn->prepare($sql);
+//         $stmt->execute($sql_args);
+//         return $stmt->fetch(PDO::FETCH_ASSOC);
+//     } catch(PDOException $e) {
+//         throw $e;
+//     } finally {
+//         unset($conn);
+//     }
+// }
+
 
 /**
  * Thực thi câu lệnh sql truy vấn một giá trị

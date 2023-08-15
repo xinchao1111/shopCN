@@ -1,3 +1,4 @@
+
 <div class="row">
             <div class="row headeradmin frmtitle">
                 <h1>DANH SÁCH TÀI KHOẢN</h1>
@@ -15,9 +16,10 @@
                             <th></th>
                         </tr>
                         <?php 
+
                             foreach($listbinhluan as $binhluan){
                                 extract($binhluan);
-                                $suabl = "index.php?act=suabl&id=".$id;
+                                // $suabl = "index.php?act=suabl&id=".$id;
                                 $xoabl = "index.php?act=xoabl&id=".$id;
                                 echo 
                                 '<tr>
