@@ -49,16 +49,39 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             }
 
             break;
-        case 'dangky':
-            if(isset($_POST['dangky'])&&($_POST['dangky'])) {
-                $email=$_POST['email'];
-                $user=$_POST['user'];
-                $pass=$_POST['pass'];
-                insert_taikhoan($email,$user,$pass);
-                $thongbao="Dang ky thanh cong";
-            }
-            include "view/taikhoan/dangky.php";
-            break;
+            case 'dangky':
+                if(isset($_POST['dangky']) && ($_POST['dangky'])) {
+                    $email = $_POST['email'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    
+                    $errors = array();
+                    
+                    // Kiểm tra dữ liệu hợp lệ
+                    if(empty($email)) {
+                        $errors[] = "Vui lòng nhập Email.";
+                    } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $errors[] = "Email không hợp lệ.";
+                    }
+                    
+                    if(empty($user)) {
+                        $errors[] = "Vui lòng nhập Username.";
+                    }
+                    
+                    if(empty($pass)) {
+                        $errors[] = "Vui lòng nhập Password.";
+                    }
+                    
+                    if(empty($errors)) {
+                        insert_taikhoan($email, $user, $pass);
+                        $thongbao = "Đăng ký thành công";
+                    } else {
+                        $thongbao = "Có lỗi xảy ra khi đăng ký.";
+                    }
+                }
+                include "view/taikhoan/dangky.php";
+                break;
+            
         case 'dangnhap':
             if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])) {
                 $user=$_POST['user'];

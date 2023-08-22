@@ -33,3 +33,5 @@ function update_taikhoan($id, $user, $pass, $email, $address, $tel) {
     // pdo_execute($sql);
 }
 
+
+

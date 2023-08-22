@@ -1,3 +1,9 @@
+<?php 
+
+// $path = $_SERVER['REQUEST_SCHEME'] . "://" .$_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
+// $path = str_replace("index.php", "", $path);
+// include "global.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Cong Nghe</title>
     <link rel="stylesheet" href="view/css/style.css">
+
 </head>
 <body>
     <div class="boxcenter">
