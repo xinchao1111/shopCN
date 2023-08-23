@@ -90,13 +90,6 @@ function bill_chi_tiet($listbill){
     global $img_path;
     $tong=0;
     $i=0;
-    // echo '<tr>
-    //     <th>Hình</th>
-    //     <th>Sản phẩm</th>
-    //     <th>Đơn giá</th>
-    //     <th>Số lượng</th>
-    //     <th>Thành tiền</th> 
-    //     </tr>';
     foreach($listbill as $cart){
         $hinh=$img_path.$cart['img'];
         $tong+=$cart['thanhtien'];
@@ -129,7 +122,7 @@ function loadALl_bill($kyw="",$iduser=0) {
 
 function loadALl_cart_count($idbill) {
     $sql = "SELECT * FROM cart WHERE idbill=" . $idbill; 
-    $cartItems = pdo_query($sql); // Assuming pdo_query returns an array of items
+    $cartItems = pdo_query($sql); 
     return sizeof($cartItems);
 }
 

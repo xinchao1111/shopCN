@@ -133,16 +133,19 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             header('Location: index.php');
             break;
         case 'addtocart':
-            if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
-                $id=$_POST['id'];
-                $name=$_POST['name'];
-                $img=$_POST['img'];
-                $price=$_POST['price'];
-                $soluong=1;
-                $ttien=$soluong * $price;
-                $spadd=[$id,$name,$img,$price,$soluong,$ttien];
-                array_push($_SESSION['mycart'],$spadd);
-                
+            if(isLoggedIn()){
+
+                if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+                    $id=$_POST['id'];
+                    $name=$_POST['name'];
+                    $img=$_POST['img'];
+                    $price=$_POST['price'];
+                    $soluong=1;
+                    $ttien=$soluong * $price;
+                    $spadd=[$id,$name,$img,$price,$soluong,$ttien];
+                    array_push($_SESSION['mycart'],$spadd);
+                    
+                }
             }
             
             include "view/cart/viewcart.php";

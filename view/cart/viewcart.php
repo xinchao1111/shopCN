@@ -98,35 +98,38 @@ tr:nth-child(even) {
 
 
 <div class="row mb">
-    <div class="boxtrai mr">
-        <div class="row mb">
-            <div class="boxtitle">GIỎ HÀNG</div>
-            <div class="row boxcontent cart">
-                <table>
-                    
-
-                    <?php 
-                        viewcart(1);
-                    ?>
-                    
-                    <!-- <tr>
-                        <td>1</td>
-                        <td><img src="../image/1.jpg" height="80px"></td>
-                        <td>Laptop</td>
-                        <td>50</td>
-                        <td>2</td>
-                        <td>100 vnd</td>
-                        <td><input type="button" value="Xóa"></td>
-                    </tr> -->
-                </table>
+<div class="boxtrai mr">
+    <div class="row mb">
+        <div class="boxtitle">GIỎ HÀNG</div>
+        <?php if (isLoggedIn()): ?>
+            <?php if (!empty($_SESSION['mycart'])): ?>
+                <div class="row boxcontent cart">
+                    <table>
+                        <?php 
+                            viewcart(1);
+                        ?>
+                    </table>
+                </div>
+                <div class="row mb bill">
+                    <a href="index.php?act=bill"><input type="button" value="Tiếp tục đặt hàng"></a>
+                    <a href="index.php"> <input type="button" value="Thêm sản phẩm"> </a>
+                    <a href="index.php?act=delcart"> <input type="button" value="Xóa giỏ hàng"> </a>
+                </div>
+            <?php else: ?>
+                <div class="row mb bill">
+                    <h2 style="color: red; font-size: 16px">Giỏ hàng trống</h2>
+                    <a href="index.php"> <input type="button" value="Thêm sản phẩm"> </a>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="row">
+                <h2 style="color: red; font-size: 16px">Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.</h2>
             </div>
-            <div class="row mb bill">
-                <a href="index.php?act=bill"><input type="button" value="Tiếp tục đặt hàng"></a>
-                <a href="index.php"> <input type="button" value="Thêm giỏ hàng"> </a>
-                <a href="index.php?act=delcart"> <input type="button" value="Xóa giỏ hàng"> </a>
-             </div>
-        </div>
+        <?php endif; ?>
     </div>
+</div>
+
+
     
     <div class="boxphai">
         <?php

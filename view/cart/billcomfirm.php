@@ -51,7 +51,7 @@
           </div>
         </div>
 
-        <div class="row mb">
+        <!-- <div class="row mb">
           <div class="boxtitle">THÔNG TIN GIỎ HÀNG</div>
           <div class="row boxcontent cart">
             <table>
@@ -68,7 +68,7 @@
                 ?>
             </table>
           </div>
-        </div>
+        </div> -->
          
     </div>
         

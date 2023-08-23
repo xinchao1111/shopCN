@@ -14,6 +14,7 @@
 
         <div class="row mb menu">
             <ul>
+                <!-- <li><a href="login.php">Đăng nhập</a></li> -->
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a href="index.php?act=adddm">Danh mục</a></li>
                 <li><a href="index.php?act=addsp">Sản phẩm</a></li>
